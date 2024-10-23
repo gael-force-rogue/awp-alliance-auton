@@ -31,6 +31,8 @@ vex::motor intake(vex::PORT7, false);
 pneumatics clamp(Brain.ThreeWirePort.A);
 
 void autonomous(void) {
+    leftMotors.setStopping(brake);
+    rightMotors.setStopping(brake);
     leftMotors.spinFor(forward, 1000, msec);
     rightMotors.spinFor(forward, 1000, msec);
     leftMotors.stop();
@@ -56,6 +58,8 @@ void usercontrol(void) {
     // false makes it tank drive
     bool arcadeDrive = true;
 
+    leftMotors.setStopping(brake);
+    rightMotors.setStopping(brake);
     intake.setStopping(brake);
     vex::thread clampThread(clampThreadF);
 
